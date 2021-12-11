@@ -142,8 +142,8 @@ class _HomePageState extends State<HomePage> {
                                     name:
                                     "Name",
                                     // dataList[index]['name'],
-                                    userName: "Username",
-                                // dataList[index]['username'],
+                                    companyName: "Company Name",
+                                // dataList[index]['company['name'],
                                     image: null,
                                 // dataList[index]['profile_image'],
                                     onPressed: () {
