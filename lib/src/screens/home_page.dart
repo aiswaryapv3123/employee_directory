@@ -42,8 +42,11 @@ class _HomePageState extends State<HomePage> {
     var items = box.toMap().values.toList();
     if (items.isEmpty) {
       dataList.add('Empty');
+      print(dataList.toString());
     } else {
       dataList.add(items);
+      print("Data List");
+      print(dataList.toString());
     }
     return Future.value(true);
   }
@@ -132,47 +135,47 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         width: MediaQuery.of(context).size.width,
                         child: ListView.builder(
-                          itemCount: 10,
+                          itemCount: dataList.length,
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           itemBuilder: (BuildContext context, int index) {
                             return Column(
                               children: [
                                 EmployeeTile(
-                                    name:
-                                    "Name",
-                                    // dataList[index]['name'],
-                                    companyName: "Company Name",
-                                // dataList[index]['company['name'],
-                                    image: null,
-                                // dataList[index]['profile_image'],
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EmployeeDetailsPage(
-                                                    name: "Name",
-                                                    // dataList[index]['name'],
-                                                    username: "username",
-                                                    // dataList[index]
-                                                    //     ['username'],
-                                                    image: null,
-                                                    // dataList[index]
-                                                    //     ['profile_image'],
-                                                    website: "www.abc.com",
-                                                    // dataList[index]
-                                                    //     ['website'],
-                                                    companyName: "Company name",
-                                                  // dataList[index]
-                                                  //       ['company']['name'],
-                                                    catchPhrase: "catchPhrase"
-                                                    // dataList[index]
-                                                    //     ['company']['catchPhrase'],
-                                                  )));
-                                    }),
+                                  name:
+                                      // "Name",
+                                      dataList[index][index]["name"],
+                                  companyName: dataList[index][index]['company']
+                                      ["name"],
+                                  // dataList[index]['company['name'],
+                                  image: dataList[index][index]
+                                  ['profile_image'],
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            EmployeeDetailsPage(
+                                          name: dataList[index][index]["name"],
+                                          username: dataList[index][index]
+                                              ['username'],
+                                          image:
+                                          dataList[index][index]
+                                              ['profile_image'],
+                                          website: dataList[index][index]
+                                              ['website'],
+                                          companyName: dataList[index][index]
+                                              ['company']['name'],
+                                          catchPhrase: dataList[index][index]
+                                              ['company']['catchPhrase'],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
                                 SizedBox(
-                                  height: MediaQuery.of(context).size.height * 0.02,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
                                 ),
                               ],
                             );
